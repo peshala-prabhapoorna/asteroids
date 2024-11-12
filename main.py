@@ -9,6 +9,12 @@ def main():
     screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pg.time.Clock()
     dt = 0
+
+    updatable = pg.sprite.Group()
+    drawable = pg.sprite.Group()
+
+    Player.containers = (updatable, drawable)
+
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     while True:
@@ -16,10 +22,14 @@ def main():
             if event.type == pg.QUIT:
                 return
 
-        player.update(dt)
+        for object in updatable:
+            object.update(dt)
 
         screen.fill("black")
-        player.draw(screen)
+
+        for object in drawable:
+            object.draw(screen)
+
         pg.display.flip()
 
         # limit the frame rate to 60fps

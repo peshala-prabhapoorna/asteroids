@@ -37,4 +37,4 @@ class Player(CircleShape):
         if keys[pg.K_w]:
             self.move(dt)
         if keys[pg.K_s]:
-            self.move(dt)
+            self.move(-dt)
