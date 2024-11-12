@@ -16,6 +16,8 @@ def main():
             if event.type == pg.QUIT:
                 return
 
+        player.update(dt)
+
         screen.fill("black")
         player.draw(screen)
         pg.display.flip()
