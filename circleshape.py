@@ -20,3 +20,10 @@ class CircleShape(pg.sprite.Sprite):
     def update(self, dt):
         # sub-classes must override
         pass
+
+    def is_colliding(self, asteroid):
+        distance = self.position.distance_to(asteroid.position)
+
+        if distance <= self.radius + asteroid.radius:
+            return True
+        return False
